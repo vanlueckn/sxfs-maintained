@@ -11,8 +11,8 @@ readme = "README.md"
 build = "build.rs"
 
 [dependencies]
-askama = { git = "https://github.com/djc/askama", features = ["with-rocket"] }
-askama_rocket = { git = "https://github.com/djc/askama" }
+askama = { git = "https://github.com/djc/askama", features = ["with-rocket"], tag = "0.10.0"  }
+askama_rocket = { git = "https://github.com/djc/askama", tag = "0.10.0" }
 base64 = "0.12"
 chrono = "0.4"
 colored = "1.9"

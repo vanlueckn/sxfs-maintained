@@ -1,12 +1,10 @@
+ARG ARCH=arm64
 # The builder container
 FROM rust:slim as builder
 WORKDIR /app
 
 RUN apt update && apt install -y curl build-essential
-
-# Make sure all dependencies are installed
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt install -y nodejs
+RUN apt install -y nodejs npm
 
 # Install typescript
 RUN npm i -g typescript
@@ -33,7 +31,7 @@ COPY . .
 RUN cargo build --release
 
 # The app container
-FROM gcr.io/distroless/cc-debian10
+FROM gcr.io/distroless/cc-debian11:latest-${ARCH}
 LABEL Author="Zachary Kohnen"
 WORKDIR /app
 
